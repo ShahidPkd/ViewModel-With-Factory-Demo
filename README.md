@@ -4,40 +4,30 @@
 This is a basic view model.
 
 
-### **Some questions on view model**
+### **Some questions on view model factory**
 
-**What is ViewModel?**
 
-Viewmodel is a Jetpack component, The class is designed to store and Manage the UI related data.
-To handle data upon Lifecycle changes of activity/application, Like Screen orientation changes.
+**What is Factory method pattern?**
 
- 
-
-**How to create ViewModel class in Android**
-
-To work with ViewModel we need to create a class that should be extends from ViewModel class.
+Factory method pattern is a creational design pattern which will uses factory methods to create objects.
+A factory method which will return instance of the same class.
 
  
 
+**Why we will use FactoryMethod pattern while working with ViewModel object?**
 
-    
-**Note**: Always use ViewModelProvider to create ViewModel objects rather than directly instantiating an instance of ViewModel.
+To pass arguments to ViewModel constructor is not a proper way and is not support to pass the arguments upon creating the instance.
+To pass arguments to the ViewModel constructor we will use the Factory Method Pattern.
 
- 
 
-**Why we need to create ViewModel object with ViewModelProvider class?**
+**How to create ViewModelfactory pattern method?**
 
-Create ViewModel Object with ViewModelProvider    
-1) It will return an existing viewmodel instance if already exists, other wise create new instance and return it.
-2) It will create the ViewModel instance with the given Scope (Activity/Fragment)
-3) The Instance is alive as long as the current scope is alive.
-
- 
-
-**What is onCleared() method?**
-
-The onCleared method is a lifecycle method of viewmodel. This method will called when the Viewmodel is destroy.
-So when we want to clear up any resources we need to do in this method.
+override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+   if (modelClass.isAssignableFrom(ScoreViewModel::class.java)) {
+       return ScoreViewModel(finalScore) as T
+   }
+   throw IllegalArgumentException("Unknown ViewModel class")
+}
 
 
 
