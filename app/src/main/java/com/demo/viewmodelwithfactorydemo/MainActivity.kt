@@ -1,4 +1,4 @@
-package com.demo.viewmodeldemo
+package com.demo.viewmodelwithfactorydemo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         // initializing the object of the view model
 //        mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         // we can also replace get call from indexing operator like just below code
-        mainViewModel = ViewModelProvider(this)[MainViewModel::class.java]
+        mainViewModel = ViewModelProvider(this, MainViewModelFactory(30))[MainViewModel::class.java]
 
 
         //set text
