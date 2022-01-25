@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         val buttonMinus = findViewById<Button>(R.id.buttonMinus)
         val textView = findViewById<TextView>(R.id.textView)
         // initializing the object of the view model
-//        mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+//        mainViewModel = ViewModelProvider(this, MainViewModelFactory(30)).get(MainViewModel::class.java)
         // we can also replace get call from indexing operator like just below code
         mainViewModel = ViewModelProvider(this, MainViewModelFactory(30))[MainViewModel::class.java]
 
